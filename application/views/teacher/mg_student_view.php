@@ -26,13 +26,13 @@
                 echo "<td>$std->Faculty</td>";
                 echo "<td>$std->Tel</td>";
                 echo "<td><a href='".base_url('users/mg_student')."' alt='แก้ไข'><i class='glyphicon glyphicon-edit'></i></a> ";
-                echo "<a href='".base_url('users/mg_student')."' alt='ลบ'><i class='glyphicon glyphicon-remove' ></i></td>";
+                echo "<a  alt='ลบ' data-name='del_student' data-id=".$std->ID_Std."><i class='glyphicon glyphicon-remove' ></i></td>";
                 echo "</tr>";
             }
-
             ?>
           </tbody>
       </table>
 
     </div>
  </div>
+<script src="<?php echo base_url()?>assets/apps/js/teacher.js" charset="utf-8"></script>

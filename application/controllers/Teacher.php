@@ -42,10 +42,42 @@ class Teacher extends CI_Controller {
         $data['student']=$this->teacher->get_student();
         $this->layout->view('teacher/mg_student_view',$data);
     }
+
     public function mg_course()
     {
         $data['course']=$this->teacher->get_course();
         $this->layout->view('teacher/mg_course_view',$data);
+    }
+    public function add_course()
+    {
+        //$data['course']=$this->teacher->get_course();
+        $this->layout->view('teacher/add_course_view');
+    }
+    public function del_student()
+    {
+        $id=$this->input->post('id');
+        $rs=$this->teacher->del_student($id);
+        //$this->layout->view('teacher/add_course_view');
+        if($rs){
+            $json = '{"success": true}';
+        }else{
+            $json = '{"success": false}';
+        }
+
+        render_json($json);
+    }
+    public function del_course()
+    {
+        $id=$this->input->post('id');
+        $rs=$this->teacher->del_course($id);
+        //$this->layout->view('teacher/add_course_view');
+        if($rs){
+            $json = '{"success": true}';
+        }else{
+            $json = '{"success": false}';
+        }
+
+        render_json($json);
     }
 
     //################# End Labor

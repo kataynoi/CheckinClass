@@ -16,10 +16,22 @@ class Teacher_model extends CI_Model
             ->result();
         return $rs;
     }
+    public function del_student($id){
+        $rs = $this->db
+            ->where('ID_Std',$id)
+            ->delete('student');
+        return $rs;
+    }
     public function get_course(){
         $rs = $this->db
             ->get('Course')
             ->result();
+        return $rs;
+    }
+    public function del_course($id){
+        $rs = $this->db
+            ->where('ID_Course',$id)
+            ->delete('course');
         return $rs;
     }
 

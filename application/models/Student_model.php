@@ -10,4 +10,11 @@ class Student_model extends CI_Model
         return $rs;
     }
 
+    public function del_student($id){
+        $rs = $this->db
+            ->where('ID_Std',$id)
+            ->delete('student');
+        return $rs;
+    }
+
 }

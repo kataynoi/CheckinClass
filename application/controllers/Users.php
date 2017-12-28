@@ -7,10 +7,8 @@ class Users extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
         $this->layout->setLayout('login_layout');
         $this->load->model('User_model', 'users');
-
     }
 
     //index action
@@ -29,7 +27,6 @@ class Users extends CI_Controller
             $this->layout->view('users/login_view');
         }
     }
-
     public function do_login()
     {
         $username = $this->input->post('username');
@@ -143,6 +140,11 @@ class Users extends CI_Controller
     {   //$data['province']=$this->users->get_province();
         $this->layout->setLayout('login_layout');
         $this->layout->view('users/student_register_view');
+    }
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(site_url(),'refresh');
     }
 
 }
