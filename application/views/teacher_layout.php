@@ -139,10 +139,10 @@ if(!$this->session->userdata("name")){
                             <a class="fa fa-bar-chart" href="<?php echo site_url('teacher/mg_course')?>">จัดการข้อมูลรายวิชา </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('download')?>"><i class="fa fa-table fa-fw"></i>จัดการข้อมูลห้องเรียน</a>
+                            <a href="<?php echo site_url('teacher/mg_class')?>"><i class="fa fa-table fa-fw"></i>จัดการข้อมูลห้องเรียน</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('download')?>"><i class="fa fa-table fa-fw"></i>ตรวจสอบการเข้าเรียน</a>
+                            <a href="<?php echo site_url('teacher/mg_checkin_class')?>"><i class="fa fa-table fa-fw"></i>จัดการการเข้าเรียน</a>
                         </li>
                             <li>
                             <a href="<?php echo site_url('users/logout')?>"><i class="fa fa-table fa-fw"></i>ออกจากระบบ</a>

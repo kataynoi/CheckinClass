@@ -344,37 +344,5 @@ $(document).ready(function(){
             users.save_student_register(items);
         }
     });
- $('#btn_request').on('click',function(){
-    // app.alert('Request');
-     var items = {};
-     items.username = $('#txt_username').val();
-     items.password = $('#txt_password').val();
 
-     if(!items.username) {
-
-         alert('กรุณาระบุชื่อผู้ใช้งาน');
-         //app.alert('กรุณาระบุชื่อผู้ใช้งาน');
-         $("#btn_login").removeProp("disabled");
-         return false;
-
-     }else if(!items.password) {
-
-         alert('กรุณาระบุรหัสผ่าน');
-         //app.alert('กรุณาระบุรหัสผ่าน');
-         $("#btn_login").removeProp("disabled");
-         return false;
-
-     }else{
-         users.ajax.request_use_system(items.password,items.username,sys_id, function (err, data) {
-             //console.log(data);
-             if (err) {
-                 app.alert('การร้องขอใช้งาน ไม่สำเร็จ อาจเนื่องมาจาก    Username Password ไม่ถูกต้อง หรือ ท่านมีชื่ออยู่ในระบบนี้แล้ว ');
-                 //app.alert(err);
-             }
-             else {
-                     app.alert('ทำการร้องขอใช้ ระบบ เรียบร้อยแล้ว จะส่งผลการอนุมัติการใช้ระบบไปทาง Email ');
-             }
-         });
-     }
- });
 });

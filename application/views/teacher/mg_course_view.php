@@ -22,7 +22,7 @@
                 echo "<td>$std->ID_Course</td>";
                 echo "<td class='text-left'>$std->Course</td>";
                 echo "<td>$std->Credit</td>";
-                echo "<td><a href='".base_url('users/mg_student')."' alt='แก้ไข'><i class='glyphicon glyphicon-edit'></i></a> ";
+                echo "<td><a href='".base_url('teacher/edit_course/')."/".$std->ID_Course."' alt='แก้ไข'><i class='glyphicon glyphicon-edit'></i></a> ";
                 echo "<a  alt='ลบ' data-name='del_course' data-id=".$std->ID_Course."><i class='glyphicon glyphicon-remove' ></i></td>";
                 echo "</tr>";
             }
