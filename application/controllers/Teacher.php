@@ -179,8 +179,8 @@ class Teacher extends CI_Controller {
     {
         $id_std=$this->input->post('ID_Std');
         $data['ID_Class']=$ID_Class;
-        if(!empty($id_std)){
-            $data['student']=$this->teacher->get_student_id($id_std);
+        if(!empty($id_std)|| $id_std !=''){
+            $data['student']=$this->teacher->search_student_id($id_std,$ID_Class);
         }else{
             $data['student']="";
         }

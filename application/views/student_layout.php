@@ -83,7 +83,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url();?>">Checkin Class 1.0.0</a>
+            <a class="navbar-brand" href="<?php echo site_url('student');?>">Checkin Class 1.0.0</a>
         </div>
         <!-- /.navbar-header -->
         <?php
@@ -132,7 +132,7 @@
                         <a href="<?php echo site_url('student/mg_student')?>"><i class="fa fa-dashboard fa-fw"></i> จัดการข้อมูลนักศึกษา</a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('download')?>"><i class="fa fa-table fa-fw"></i>ตรวจสอบการเข้าเรียน</a>
+                        <a href="<?php echo site_url('student/report_student_checkin')?>"><i class="fa fa-table fa-fw"></i>ตรวจสอบการเข้าเรียน</a>
                     </li>
                     <li>
                         <a href="<?php echo site_url('users/logout')?>"><i class="fa fa-table fa-fw"></i>ออกจากระบบ</a>

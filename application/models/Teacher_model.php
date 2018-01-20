@@ -24,6 +24,14 @@ class Teacher_model extends CI_Model
     }
     public function get_student_id($id){
         $rs = $this->db
+            ->where('ID_Std',$id)
+            ->get('student')
+            ->result();
+        return $rs;
+    }
+    public function search_student_id($id,$ID_Class){
+        $rs = $this->db
+            ->where('ID_Std NOT IN (SELECT ID_Std FROM student_in_class WHERE ID_Class= '.$ID_Class.') ' )
             ->like('ID_Std',$id)
             ->get('student')
             ->result();

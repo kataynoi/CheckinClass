@@ -83,7 +83,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url();?>">Checkin Class 1.0.0</a>
+            <a class="navbar-brand" href="<?php echo site_url('teacher');?>">Checkin Class 1.0.0</a>
         </div>
         <!-- /.navbar-header -->
 <?php
