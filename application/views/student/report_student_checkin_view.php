@@ -24,7 +24,7 @@
                 echo "<td class='text-left'>$std->Course <span class='label label-info'>[ภาคเรียนที่ $std->Term / $std->Year]</span></td>";
                 echo "<td class='text-left'>$std->Name_Teacher</td>";
                 echo "<td class='text-left'>$std->Name_Class</td>";
-                echo "<td><a href='".base_url('student/report_checkin_by_course')."/".$std->ID_Class."' class='btn btn-success btn-sm'>ตรวจสอบการเข้าเรียน</a></td>";
+                echo "<td><a href='".site_url('student/report_checkin_by_course')."/".$std->ID_Class."' class='btn btn-success btn-sm'>ตรวจสอบการเข้าเรียน</a></td>";
                 echo "<td></td>";
                 echo "</tr>";
             }

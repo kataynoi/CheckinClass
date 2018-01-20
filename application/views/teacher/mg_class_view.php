@@ -26,7 +26,7 @@
                 echo "<td>$rs->Course<a href='add_student_inclass"."/".$rs->ID_Class."' class='btn btn-success btn-sm'>เพิ่มนักศึกษา</a></td>";
                 echo "<td>$rs->Name_Teacher</td>";
                 echo "<td>$rs->count_student</td>";
-                echo "<td><a href='".base_url('teacher/edit_class/')."/".$rs->ID_Class."' alt='แก้ไข'><i class='glyphicon glyphicon-edit'></i></a> ";
+                echo "<td><a href='".site_url('teacher/edit_class/')."/".$rs->ID_Class."' alt='แก้ไข'><i class='glyphicon glyphicon-edit'></i></a> ";
                 echo "<a  alt='ลบ' data-name='del_class' data-id=".$rs->ID_Class."><i class='glyphicon glyphicon-remove' ></i></td>";
                 echo "</tr>";
             }

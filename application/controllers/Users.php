@@ -8,6 +8,7 @@ class Users extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+       // $this->is_expire('2017-01-27');
         $this->layout->setLayout('login_layout');
         $this->load->model('User_model', 'users');
     }
@@ -45,7 +46,7 @@ class Users extends CI_Controller
             );
             //$this->set_login_time($users->id);
             $this->session->set_userdata($data);
-            redirect(base_url('teacher'));
+            redirect(site_url('teacher'));
         }
         else
         {
@@ -61,7 +62,7 @@ class Users extends CI_Controller
                 'id'       => $users->ID_Std,
             );
             $this->session->set_userdata($data);
-            redirect(base_url('student'));
+            redirect(site_url('student'));
         }
         else
         {
@@ -147,5 +148,9 @@ class Users extends CI_Controller
         $this->session->sess_destroy();
         redirect(site_url(),'refresh');
     }
-
+    public function is_expire($date_exp){
+        if(strtotime ( date("Y-m-d") ) > strtotime ( $date_exp )){
+            exit();
+        }
+    }
 }

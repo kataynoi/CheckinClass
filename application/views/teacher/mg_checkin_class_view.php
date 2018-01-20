@@ -29,7 +29,7 @@
                 echo "<td>$rs->Name_Teacher</td>";
                 echo "<td>$rs->count_student</td>";
                 echo "<td>$rs->Num_create_class</td>";
-                echo "<td><a href='".base_url('teacher/create_checkin_class/')."/".$rs->ID_Class."' alt='รายละเอียด' class='btn btn-info'>
+                echo "<td><a href='".site_url('teacher/create_checkin_class/')."/".$rs->ID_Class."' alt='รายละเอียด' class='btn btn-info'>
                 <i class='glyphicon glyphicon-edit'></i>รายละเอียด</a> </td>";
                 echo "</tr>";
             }

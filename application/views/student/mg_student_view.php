@@ -68,4 +68,4 @@
     <button type="button" class=" btn btn-warning"><i class="glyphicon glyphicon-remove"></i> ยกเลิก</button>
 </div>
 </div>
-<script src="<?php echo base_url()?>assets/apps/js/users.js" charset="utf-8"></script>
+<script src="<?php echo site_url()?>assets/apps/js/users.js" charset="utf-8"></script>

@@ -25,7 +25,7 @@
                 echo "<td>$std->Branch</td>";
                 echo "<td>$std->Faculty</td>";
                 echo "<td>$std->Tel</td>";
-                echo "<td><a href='".base_url('users/mg_student')."' alt='แก้ไข'><i class='glyphicon glyphicon-edit'></i></a> ";
+                echo "<td><a href='".site_url('users/mg_student')."' alt='แก้ไข'><i class='glyphicon glyphicon-edit'></i></a> ";
                 echo "<a  alt='ลบ' data-name='del_student' data-id=".$std->ID_Std."><i class='glyphicon glyphicon-remove' ></i></td>";
                 echo "</tr>";
             }
