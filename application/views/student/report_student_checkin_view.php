@@ -28,7 +28,6 @@
                 echo "<td></td>";
                 echo "</tr>";
             }
-
             ?>
           </tbody>
       </table>

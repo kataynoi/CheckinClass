@@ -57,7 +57,7 @@
         }
         ?>
         <tr>
-            <td colspan="3"><div class="alert alert-success"> จำนวนคาบเรียนที่เปิดสอน <?PHP $n=$n-1; echo ($n)." เข้าเรียน ".$inclass." ครั้ง ขาดเรียน ".($n-$inclass)." สรปุปผลเข้าเรียนร้อยละ ".round($inclass*100/$n,2);?></div></td>
+            <td colspan="3"><div class="alert alert-success"> จำนวนคาบเรียนที่เปิดสอน <?PHP $n=$n-1; echo ($n)." เข้าเรียน ".$inclass." ครั้ง ขาดเรียน ".($n-$inclass)." สรปุปผลเข้าเรียนร้อยละ ".@round($inclass*100/$n,2);?></div></td>
         </tr>
         </tbody>
     </table>

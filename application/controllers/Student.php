@@ -20,7 +20,6 @@ class Student extends CI_Controller {
         //load model
         $this->layout->setLayout('student_layout');
         $this->load->model('student_model', 'student');
-        $this->load->model('teacher_model', 'teacher');
         $this->load->model('Basic_model', 'basic');
         $this->db = $this->load->database('default', true);
         $this->id_student = $this->session->userdata('id');
@@ -42,6 +41,7 @@ class Student extends CI_Controller {
     {
         $ID_Std = $this->session->userdata('id');
         $rs=$this->student->get_course($ID_Std);
+        $data['course']=array();
         if($rs) {
             $arr_result = array();
             foreach ($rs as $r) {
@@ -70,6 +70,7 @@ class Student extends CI_Controller {
         $ID_Std = $this->session->userdata('id');
         $data['class']=$this->student->get_class_id($ID_class);
         $rs=$this->student->get_checkin_by_class($ID_class,$ID_Std);
+        $data['checkin'] = array();
         if($rs) {
             $arr_result = array();
             foreach ($rs as $r) {
@@ -81,6 +82,7 @@ class Student extends CI_Controller {
             }
             $data['checkin'] = $arr_result;
         }
+
         $this->layout->view('student/report_checkin_by_course_view',$data);
     }
 }

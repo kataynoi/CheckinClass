@@ -52,6 +52,7 @@ class Teacher extends CI_Controller {
     public function mg_class()
     {
         $rs=$this->teacher->get_all_class($this->session->userdata('id'));
+        $data['class'] = array();
         if($rs) {
             $arr_result = array();
             foreach ($rs as $r) {
@@ -74,6 +75,7 @@ class Teacher extends CI_Controller {
     public function mg_checkin_class()
     {
         $rs=$this->teacher->get_all_class($this->session->userdata('id'));
+        $data['class'] = array();
         if($rs) {
             $arr_result = array();
             foreach ($rs as $r) {
@@ -86,10 +88,9 @@ class Teacher extends CI_Controller {
                 $obj->Num_create_class  = $this->teacher->get_num_create_class($r->ID_Class);
                 $arr_result[] = $obj;
             }
-
-            //$rows = json_encode($arr_result);
-            $data['class'] = $arr_result;
         }
+
+        $data['class'] = $arr_result;
         $this->layout->view('teacher/mg_checkin_class_view',$data);
     }
     public  function  checkin($id,$Create_class_id,$n){
@@ -100,7 +101,7 @@ class Teacher extends CI_Controller {
         $rs=$this->teacher->get_student_inclass($id);
         $data['class']=$this->teacher->get_class_id($id);
         $data['course']=$this->teacher->get_course();
-
+        $data['student'] =array();
         if($rs) {
             $arr_result = array();
             foreach ($rs as $r) {
@@ -157,6 +158,7 @@ class Teacher extends CI_Controller {
         $data['numall_student']=$this->teacher->get_numall_student_inclass($id);
         $data['class']=$this->teacher->get_class_id($id);
         $data['course']=$this->teacher->get_course();
+        $data['checkin']=array();
         $rs=$this->teacher->get_preriod_checkin_by_class($id);
         if($rs) {
             $arr_result = array();
@@ -182,7 +184,7 @@ class Teacher extends CI_Controller {
         if(!empty($id_std)|| $id_std !=''){
             $data['student']=$this->teacher->search_student_id($id_std,$ID_Class);
         }else{
-            $data['student']="";
+            $data['student']=array();
         }
         $this->layout->view('teacher/search_student_inclass_view',$data);
     }
