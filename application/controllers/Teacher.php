@@ -112,9 +112,6 @@ class Teacher extends CI_Controller {
                 $obj->Faculty = $r->Faculty;
                 $obj->Checkin = $this->teacher->get_checkin($Create_class_id,$r->ID_Std);
                 $obj->Create_class_id = $Create_class_id;
-                //$obj->count_student = $this->teacher->count_student_inclass($r->ID_Class);
-
-                //$obj->off_name  = $this->users->get_off_name($r->id);
                 $arr_result[] = $obj;
             }
 

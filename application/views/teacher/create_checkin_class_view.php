@@ -76,7 +76,7 @@
             echo "<td>$r->Date_create</td>";
             echo "<td >$r->Student_checkin</td>";
             echo "<td>".($numall_student-$r->Student_checkin)."</td>";
-            echo "<td><div class='btn-group' role='group'><a href='".base_url('teacher/checkin/')."/".$r->ID_Class."/".$r->ID_create_class."/".$n."' class='btn btn-success btn-secondary'><i class='glyphicon glyphicon-check'></i>เช็คชื่อเข้าเรียน</a>";
+            echo "<td><div class='btn-group' role='group'><a href='".site_url('teacher/checkin/')."/".$r->ID_Class."/".$r->ID_create_class."/".$n."' class='btn btn-success btn-secondary'><i class='glyphicon glyphicon-check'></i>เช็คชื่อเข้าเรียน</a>";
             echo "<a class='btn btn-warning btn-secondary' data-name='del_period_class' data-id=".$r->ID_create_class."><i class='glyphicon glyphicon-remove'></i> ลบ</a></div></td>";
            echo "</tr>";
             $n++;
