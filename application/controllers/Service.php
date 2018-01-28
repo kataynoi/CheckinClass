@@ -67,4 +67,28 @@ class Service extends CI_Controller
         }
         render_json($json);
     }
+
+    public function getCreateClass()
+    {
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $rs=$this->teacher->get_preriod_checkin_by_class($obj->ID_Class);
+        if($rs) {
+            $arr_result = array();
+            foreach ($rs as $r) {
+                $obj = new stdClass();
+                $obj->ID_create_class = $r->ID_create_class;
+                $obj->ID_Class = $r->ID_Class;
+                $obj->Date_create =to_thai_date_time($r->Date_create) ;
+                $obj->Student_checkin = $this->teacher->get_total_student_checkin($r->ID_create_class);
+                $arr_result[] = $obj;
+            }
+
+            $rows = json_encode($arr_result);
+            $json = '{"success": true, "rows": '.$rows.'}';
+        }else{
+            $json = '{"success": false,}';
+        }
+        render_json($json);
+    }
 }
