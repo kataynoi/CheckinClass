@@ -151,7 +151,8 @@ class Teacher extends CI_Controller {
         $this->layout->view('teacher/add_student_inclass_view',$data);
     }
     public function create_checkin_class($id)
-    {   $data['ID_Class']=$id;
+    {   $data['ID_Class']=$id
+    ;
         $data['numall_student']=$this->teacher->get_numall_student_inclass($id);
         $data['class']=$this->teacher->get_class_id($id);
         $data['course']=$this->teacher->get_course();
@@ -225,7 +226,6 @@ class Teacher extends CI_Controller {
     {
         $id=$this->input->post('id');
         $rs=$this->teacher->create_period_class($id);
-
 
         if($rs){
             $json = '{"success": true}';

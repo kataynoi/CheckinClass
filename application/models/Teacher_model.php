@@ -164,6 +164,7 @@ class Teacher_model extends CI_Model
             ->count_all_results('check_in_student');
         return $rs > 0 ? TRUE : FALSE;
     }
+
     public function get_preriod_checkin_by_class ($id){
         $rs=$this->db
             ->where('ID_Class',$id)

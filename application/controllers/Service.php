@@ -67,25 +67,81 @@ class Service extends CI_Controller
         }
         render_json($json);
     }
+    public function createPeriod()
+    {
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $rs=$this->teacher->create_period_class($obj->ID_Class);
+        if($rs) {
+            $json = '{"success": true,}';
+        }else{
+            $json = '{"success": false,}';
+        }
+        render_json($json);
+    }
 
     public function getCreateClass()
     {
         $json = file_get_contents('php://input');
         $obj = json_decode($json);
         $rs=$this->teacher->get_preriod_checkin_by_class($obj->ID_Class);
+        $n =1;
         if($rs) {
             $arr_result = array();
             foreach ($rs as $r) {
                 $obj = new stdClass();
+
                 $obj->ID_create_class = $r->ID_create_class;
                 $obj->ID_Class = $r->ID_Class;
                 $obj->Date_create =to_thai_date_time($r->Date_create) ;
                 $obj->Student_checkin = $this->teacher->get_total_student_checkin($r->ID_create_class);
+                $obj->n = $n++;
                 $arr_result[] = $obj;
+
             }
 
             $rows = json_encode($arr_result);
             $json = '{"success": true, "rows": '.$rows.'}';
+        }else{
+            $json = '{"success": false,}';
+        }
+        render_json($json);
+    }
+    public function getStudentCheckin()
+    {
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $rs=$this->teacher->get_student_inclass($obj->ID_Class);
+        $ID_create_class= $obj->ID_create_class;
+        $data['student'] =array();
+        if($rs) {
+            $arr_result = array();
+            foreach ($rs as $r) {
+                $Checkin = $this->teacher->get_checkin($ID_create_class,$r->ID_Std);
+                $obj = new stdClass();
+                $obj->ID_Std = $r->ID_Std;
+                $obj->Name_Std = $r->Name_Std;
+                $obj->Branch = $r->Branch;
+                $obj->Faculty = $r->Faculty;
+                $obj->Checkin = $this->teacher->get_checkin($ID_create_class,$r->ID_Std);
+                $arr_result[] = $obj;
+
+            }
+
+            $rows = json_encode($arr_result);
+            $json = '{"success": true, "rows": '.$rows.'}';
+        }else{
+            $json = '{"success": false,}';
+        }
+        render_json($json);
+    }
+    public function checkinStudent()
+    {
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $rs=$this->teacher->save_checkin_student($obj->ID_Std,$obj->ID_create_class);
+        if($rs) {
+            $json = '{"success": true,}';
         }else{
             $json = '{"success": false,}';
         }
