@@ -31,7 +31,8 @@ class Service extends CI_Controller
                 'id'=> $users->ID_Teacher,
                 'email'=>$users->Email,
                 'subject'=>$users->Subject,
-                'faculty'=>$users->Faculty
+                'faculty'=>$users->Faculty,
+                'tel'=>$users->Tel
             );
             $rows = json_encode($data);
             $json = '{"success": true, "rows": '.$rows.'}';
@@ -117,7 +118,7 @@ class Service extends CI_Controller
         if($rs) {
             $arr_result = array();
             foreach ($rs as $r) {
-                $Checkin = $this->teacher->get_checkin($ID_create_class,$r->ID_Std);
+
                 $obj = new stdClass();
                 $obj->ID_Std = $r->ID_Std;
                 $obj->Name_Std = $r->Name_Std;
