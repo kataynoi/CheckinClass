@@ -184,10 +184,6 @@ $(document).ready(function(){
             if (err) {
                 app.alert(err);
             }
-            else {
-                alert('เพิ่มเรียบร้อย ');
-                window.location=site_url+'/teacher/add_student_inclass'+'/'+classid;
-            }
         });
     }
     setting.checkin_student = function(id_std,createclassid){
@@ -264,7 +260,9 @@ $(document).ready(function(){
         var id = $(this).data('id');
         var classid = $(this).data('classid');
         if(confirm('ต้องการเพิ่มนักศึกษาเข้าห้องเรียน')){
+
             setting.add_student_inclass(id,classid);
+            $(this).parent().parent().hide();
         }
 
     });

@@ -8,7 +8,6 @@ class Users extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-       // $this->is_expire('2017-01-27');
         $this->layout->setLayout('login_layout');
         $this->load->model('User_model', 'users');
     }
