@@ -144,6 +144,9 @@ if(!$this->session->userdata("name")){
                         <li>
                             <a href="<?php echo site_url('teacher/mg_checkin_class')?>"><i class="fa fa-table fa-fw"></i>จัดการการเข้าเรียนของนักศึกษา</a>
                         </li>
+                        <li>
+                            <a href="<?php echo site_url('report')?>"><i class="fa fa-table fa-fw"></i>รายงานเข้าเรียนของนักศึกษา</a>
+                        </li>
                             <li>
                             <a href="<?php echo site_url('users/logout')?>"><i class="fa fa-table fa-fw"></i>ออกจากระบบ</a>
                         </li>

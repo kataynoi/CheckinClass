@@ -161,8 +161,9 @@ class Teacher_model extends CI_Model
         $rs = $this->db
             ->where('ID_create_class',$ID_create_class)
             ->where('ID_Std',$ID_Std)
-            ->count_all_results('check_in_student');
-        return $rs > 0 ? TRUE : FALSE;
+            ->get('check_in_student')
+            ->row();
+        return $rs->Status_checkin;
     }
 
     public function get_preriod_checkin_by_class ($id){
@@ -186,14 +187,28 @@ class Teacher_model extends CI_Model
             ->set('ID_Class',$id)
             ->set('Date_create',"STR_TO_DATE(now(),'%Y-%m-%d %H:%i:%s')",false)
             ->insert('create_class');
+        $lastid = $this->db->insert_id();
+        $rs2=$this->db
+            ->where('ID_create_class',$lastid)
+            ->get('create_class')->row();;
+        return $rs2;
+    }
+    public function insert_checkin_student ($id_class,$ID_Create_class,$Date_create,$ID_Std){
+        $rs=$this->db
+            ->set('ID_create_class',$ID_Create_class)
+            ->set('ID_Std',$ID_Std)
+            ->set('Date_create',$Date_create)
+            ->insert('check_in_student');
         return $rs;
     }
-    public function save_checkin_student ($id_std,$createclassid){
+
+    public function save_checkin_student ($ID_Std,$ID_Create_class,$status_checkin){
         $rs=$this->db
-            ->set('ID_create_class',$createclassid)
-            ->set('ID_Std',$id_std)
-            ->set('DateTime_checkin',"STR_TO_DATE(now(),'%Y-%m-%d %H:%i:%s')",false)
-            ->insert('check_in_student');
+            ->where('ID_create_class',$ID_Create_class)
+            ->where('ID_Std',$ID_Std)
+            ->set('Status_checkin',$status_checkin)
+            ->set('DateTime_Checkin',"STR_TO_DATE(now(),'%Y-%m-%d %H:%i:%s')",false)
+            ->update('check_in_student');
         return $rs;
     }
     public function get_total_student_checkin($ID_create_class){
@@ -211,6 +226,22 @@ class Teacher_model extends CI_Model
         $rs = $this->db
             ->where('ID_Class',$Class_id)
             ->count_all_results('create_class');
+        return $rs;
+    }
+    public function get_date_create_class($create_class_id){
+        $rs = $this->db
+            ->where('ID_create_class',$create_class_id)
+            ->get('create_class')
+            ->row();
+        return $rs->Date_create;
+    }
+    public function count_checkin($Class_id,$status,$ID_STD){
+        $rs = $this->db
+            ->where('b.ID_Class',$Class_id)
+            ->where('a.ID_std',$ID_STD)
+            ->where('a.Status_checkin',$status)
+            ->join('create_class b','a.ID_create_class = b.ID_create_class')
+            ->count_all_results('check_in_student a ');
         return $rs;
     }
 }

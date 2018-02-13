@@ -110,7 +110,7 @@ class Teacher extends CI_Controller {
                 $obj->Name_Std = $r->Name_Std;
                 $obj->Branch = $r->Branch;
                 $obj->Faculty = $r->Faculty;
-                $obj->Checkin = $this->teacher->get_checkin($Create_class_id,$r->ID_Std);
+                $obj->Status_checkin = $this->teacher->get_checkin($Create_class_id,$r->ID_Std);
                 $obj->Create_class_id = $Create_class_id;
                 $arr_result[] = $obj;
             }
@@ -224,8 +224,20 @@ class Teacher extends CI_Controller {
     }
     public function create_period_class()
     {
-        $id=$this->input->post('id');
-        $rs=$this->teacher->create_period_class($id);
+        $id_class=$this->input->post('id');
+        $rs=$this->teacher->create_period_class($id_class);
+       // echo $rs;
+        $ID_Create_class=$rs->ID_create_class;
+        $Date_create= $rs->Date_create;
+        //echo $rs;
+      // exit();
+        //$rs2=$this->teacher->insert_student_in_class($id_class,$ID_Create_class,$Date_create);
+        $std = $this->teacher->get_student_inclass($id_class);
+        foreach($std as $r)
+        {
+            $rs=$this->teacher->insert_checkin_student($id_class,$ID_Create_class,$Date_create,$r->ID_Std);
+
+        }
 
         if($rs){
             $json = '{"success": true}';
@@ -309,7 +321,14 @@ class Teacher extends CI_Controller {
     {
         $id_std=$this->input->post('id_std');
         $createclassid=$this->input->post('createclassid');
-        $rs=$this->teacher->save_checkin_student($id_std,$createclassid);
+        $date_create = $this->teacher->get_date_create_class($createclassid);
+        $second = DateTimeDiff( $date_create, date("Y-m-d H:i:s"));
+        if($second > 1800){
+            $status_checkin =3;
+        }else{
+            $status_checkin =2;
+        }
+        $rs=$this->teacher->save_checkin_student($id_std,$createclassid,$status_checkin);
         if($rs){
             $json = '{"success": true}';
         }else{
@@ -318,7 +337,7 @@ class Teacher extends CI_Controller {
         render_json($json);
     }
 
-    //################# End Labor
+    //################# End
 
 
 }

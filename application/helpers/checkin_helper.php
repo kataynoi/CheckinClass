@@ -212,7 +212,24 @@ if(!function_exists('get_sex'))
         }
     }
 }
-
+if(!function_exists('get_checkin_status'))
+{
+    function get_checkin_status($id)
+    {
+        if(!empty($id))
+        {
+            if($id == '1') return 'ขาดเรียน';
+            else if($id == '2') return 'มาเรียน';
+            else if($id == '3') return 'มาสาย';
+            else if($id == '4') return 'ลา';
+            else return 'ไม่ชัดเจน';
+        }
+        else
+        {
+            return '-';
+        }
+    }
+}
 if(!function_exists('DateTimeDiff'))
 {
 

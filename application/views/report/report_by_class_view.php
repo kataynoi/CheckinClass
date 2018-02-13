@@ -1,9 +1,9 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo site_url('teacher')?>">Teacher </a></li>
-    <li class="active"> เช็คชื่อเข้าเรียน คาบเรียนที่ <?php echo $n. " วันที่ ". to_thai_date_time($period->Date_create);?></li>
+    <li class="active"> รายงานการเข้าเรียน</li>
 </ul>
 <div class="panel panel-default">
-    <div class="panel-heading"><i class="glyphicon glyphicon-refresh"></i>เช็คชื่อเข้าเรียน</div>
+    <div class="panel-heading"><i class="glyphicon glyphicon-refresh"></i>รายงานการเข้าเรียน</div>
     <div class="panel-body text-center">
         <form  class="form-horizontal"  method="post">
             <div class="row">
@@ -50,7 +50,8 @@
 
     </form>
 </div>
-
+<div class="panel-footer text-center">
+</div>
 </div>
 <div class="panel-body text-center">
     <table class="table table-responsive">
@@ -59,44 +60,32 @@
             <th> NO.</th>
             <th> รหัสนักศึกษา </th>
             <th> ชื่อนักศึกษา </th>
-            <th> สาขาวิชา </th>
-            <th> คณะ </th>
-            <th> การจัดการ</th>
+            <th> มาเรียน</th>
+            <th> มาสาย</th>
+            <th> ขาด</th>
+            <th> ลา</th>
         </tr>
         </thead>
         <tbody>
         <?php
-
+        $n=1;
         foreach($student as $std) {
-            $n=1; $disabled='';
-         switch($std->Status_checkin){
-                case 1 :
-                    $color='btn-danger';$txt='เช็คชื่อ';
-                    break;
-                case 2 :
-                    $color='btn-success';$txt='เข้าเรียน'; $disabled="disabled='disabled'";
-                    break;
-                case 3 :
-                    $color='btn-warning';$txt='มาเรียนสาย';$disabled="disabled='disabled'";
-                    break;
-                case 4 :
-                    $color='btn-warning';$txt='ลา';
-                    break;
-            }
 
-        echo "<tr>";
+            echo "<tr>";
             echo "<td>$n</td>";
             echo "<td>$std->ID_Std</td>";
             echo "<td class='text-left'>$std->Name_Std</td>";
-            echo "<td>$std->Branch</td>";
-            echo "<td>$std->Faculty</td>";
-            echo "<td><a class =' btn btn-sm ".$color."' data-name='btn_checkin' ".$disabled." data-id=".$std->ID_Std." data-createclassid=".$std->Create_class_id.">".$txt."</a></td>";
-           echo "</tr>";
+            echo "<td>$std->Status2</td>";
+            echo "<td>$std->Status3</td>";
+            echo "<td>$std->Status1</td>";
+            echo "<td>$std->Status4</td>";
+            echo "</tr>";
             $n++;
         }
         ?>
         </tbody>
     </table>
+
 
 </div>
 <script src="<?php echo base_url()?>assets/apps/js/teacher.js" charset="utf-8"></script>

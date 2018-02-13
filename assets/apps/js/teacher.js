@@ -284,7 +284,7 @@ $(document).ready(function(){
 
     });
     $(document).on('click', 'a[data-name="btn_checkin"]', function(e) {
-        e.preventDefault();
+        //e.preventDefault();
         var id_std = $(this).data('id');
         var createclassid = $(this).data('createclassid');
             setting.checkin_student(id_std, createclassid);
