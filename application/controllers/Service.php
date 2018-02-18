@@ -42,6 +42,32 @@ class Service extends CI_Controller
 
         render_json($json);
     }
+
+    public function delPeriod()
+    {
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $rs=$this->teacher->del_period_class($obj->ID_create_class);
+        //$this->layout->view('teacher/add_course_view');
+        if($rs){
+            $json = '{"success": true}';
+        }else{
+            $json = '{"success": false}';
+        }
+        render_json($json);
+    }
+    public function setLeave()
+    {
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $rs=$this->teacher->save_checkin_student($obj->ID_Std,$obj->ID_create_class,$obj->status);
+        if($rs){
+            $json = '{"success": true}';
+        }else{
+            $json = '{"success": false}';
+        }
+        render_json($json);
+    }
     public function getClassroom()
     {
         $json = file_get_contents('php://input');
@@ -73,6 +99,15 @@ class Service extends CI_Controller
         $json = file_get_contents('php://input');
         $obj = json_decode($json);
         $rs=$this->teacher->create_period_class($obj->ID_Class);
+        $ID_Create_class=$rs->ID_create_class;
+        $Date_create= $rs->Date_create;
+        $std = $this->teacher->get_student_inclass($obj->ID_Class);
+        foreach($std as $r)
+        {
+            $rs=$this->teacher->insert_checkin_student($obj->ID_Class,$ID_Create_class,$Date_create,$r->ID_Std);
+
+        }
+
         if($rs) {
             $json = '{"success": true,}';
         }else{
@@ -124,6 +159,7 @@ class Service extends CI_Controller
                 $obj->Name_Std = $r->Name_Std;
                 $obj->Branch = $r->Branch;
                 $obj->Faculty = $r->Faculty;
+                //$obj->Checkin = get_checkin_status($this->teacher->get_checkin($ID_create_class,$r->ID_Std));
                 $obj->Checkin = $this->teacher->get_checkin($ID_create_class,$r->ID_Std);
                 $arr_result[] = $obj;
 
@@ -140,7 +176,15 @@ class Service extends CI_Controller
     {
         $json = file_get_contents('php://input');
         $obj = json_decode($json);
-        $rs=$this->teacher->save_checkin_student($obj->ID_Std,$obj->ID_create_class);
+        $date_create = $this->teacher->get_date_create_class($obj->ID_create_class);
+        $second = DateTimeDiff( $date_create, date("Y-m-d H:i:s"));
+        if($second > 1800){
+            $status_checkin =3;
+        }else{
+            $status_checkin =2;
+        }
+
+        $rs=$this->teacher->save_checkin_student($obj->ID_Std,$obj->ID_create_class,$status_checkin);
         if($rs) {
             $json = '{"success": true,}';
         }else{

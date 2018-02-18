@@ -1,5 +1,7 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo site_url('teacher')?>">Teacher </a></li>
+    <li><a href="<?php echo site_url('teacher/mg_checkin_class')?>">จัดการการเข้าเรียน </a></li>
+    <li><a href="<?php echo site_url('teacher/create_checkin_class/'.$class->ID_Class)?>">สร้างคาบเรียน </a></li>
     <li class="active"> เช็คชื่อเข้าเรียน คาบเรียนที่ <?php echo $n. " วันที่ ". to_thai_date_time($period->Date_create);?></li>
 </ul>
 <div class="panel panel-default">
@@ -68,10 +70,10 @@
         <?php
 
         foreach($student as $std) {
-            $n=1; $disabled='';
+            $n=1; $disabled='';$leave='';
          switch($std->Status_checkin){
                 case 1 :
-                    $color='btn-danger';$txt='เช็คชื่อ';
+                    $color='btn-danger';$txt='เช็คชื่อ'; $leave='<button class="btn" data-name="btn_leave" '.$disabled.' data-id='.$std->ID_Std.' data-leave="1" data-createclassid='.$std->Create_class_id.'> ลา</button>';
                     break;
                 case 2 :
                     $color='btn-success';$txt='เข้าเรียน'; $disabled="disabled='disabled'";
@@ -90,7 +92,7 @@
             echo "<td class='text-left'>$std->Name_Std</td>";
             echo "<td>$std->Branch</td>";
             echo "<td>$std->Faculty</td>";
-            echo "<td><a class =' btn btn-sm ".$color."' data-name='btn_checkin' ".$disabled." data-id=".$std->ID_Std." data-createclassid=".$std->Create_class_id.">".$txt."</a></td>";
+            echo "<td><a class =' btn btn-sm ".$color."' data-name='btn_checkin' ".$disabled." data-id=".$std->ID_Std." data-createclassid=".$std->Create_class_id.">".$txt."</a> ".$leave."</td>";
            echo "</tr>";
             $n++;
         }

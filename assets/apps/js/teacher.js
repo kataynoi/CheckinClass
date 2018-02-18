@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    $('.carousel').carousel();
     var setting = {};
     setting.ajax = {
         save_class: function (items, cb) {
@@ -80,6 +80,16 @@ $(document).ready(function(){
             err ? cb(err) : cb(null, data);
         });
     },
+        del_period_class: function (id, cb) {
+        var url = '/teacher/del_period_class',
+            params = {
+                id: id
+            }
+
+        app.ajax(url, params, function (err, data) {
+            err ? cb(err) : cb(null, data);
+        });
+    },
         del_course: function (id, cb) {
         var url = '/teacher/del_course',
             params = {
@@ -105,6 +115,18 @@ $(document).ready(function(){
             params = {
                 id_std: id_std,
                 createclassid: createclassid
+            }
+
+        app.ajax(url, params, function (err, data) {
+            err ? cb(err) : cb(null, data);
+        });
+    },
+        checkin_student_leave: function (id_std,createclassid,status, cb) {
+        var url = '/teacher/checkin_student_leave',
+            params = {
+                id_std: id_std,
+                createclassid: createclassid,
+                status:status
             }
 
         app.ajax(url, params, function (err, data) {
@@ -137,6 +159,17 @@ $(document).ready(function(){
     }
     setting.del_class = function(id){
         setting.ajax.del_class(id, function (err, data) {
+            if (err) {
+                app.alert(err);
+            }
+            else {
+                alert('ลบเรียบร้อย ');
+                window.location.reload();
+            }
+        });
+    }
+    setting.del_period_class = function(id){
+        setting.ajax.del_period_class(id, function (err, data) {
             if (err) {
                 app.alert(err);
             }
@@ -197,6 +230,17 @@ $(document).ready(function(){
             }
         });
     }
+    setting.checkin_student_leave = function(id_std,createclassid,status){
+        setting.ajax.checkin_student_leave(id_std,createclassid,status, function (err, data) {
+            if (err) {
+                app.alert(err);
+            }
+            else {
+                //alert('เพิ่มเรียบร้อย ');
+                window.location.reload();
+            }
+        });
+    }
     setting.del_student_inclass = function(id,classid){
         setting.ajax.del_student_inclass(id,classid, function (err, data) {
             if (err) {
@@ -247,6 +291,15 @@ $(document).ready(function(){
 
     });
 
+    $(document).on('click', 'a[data-name="del_period_class"]', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        if(confirm('ต้องการลบคาบเรียน')){
+            setting.del_period_class(id);
+        }
+
+    });
+
     $(document).on('click', 'a[data-name="del_class"]', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
@@ -291,6 +344,26 @@ $(document).ready(function(){
 
     });
 
+    $(document).on('click', 'button[data-name="btn_leave"]', function(e) {
+        //e.preventDefault();
+        var id_std = $(this).data('id');
+        var leave = $(this).data('leave');
+        var status = '4';
+        if(leave=1){
+            $(this).data('leave','0');
+        }else{
+            $(this).data('leave','1');
+            status = '1';
+        }
+        var createclassid = $(this).data('createclassid');
+           setting.checkin_student_leave(id_std, createclassid,status);
+
+    });
+    $(document).on('click', 'button[data-name="print"]', function(e) {
+        e.preventDefault();
+       window.print();
+
+    });
     $('#btn_save_course').on('click',function(){
         var items={};
         items.ID_Course=$('#ID_Course').val();

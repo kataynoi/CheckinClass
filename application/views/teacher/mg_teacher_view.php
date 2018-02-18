@@ -1,5 +1,5 @@
 <ul class="breadcrumb">
-    <li><a href="<?php echo site_url('users/login')?>">Login </a></li>
+    <li><a href="<?php echo site_url('teacher')?>">หน้าหลัก </a></li>
     <li class="active"> ข้อมูลอาจารย์ : Teacher view </li>
 </ul>
 <div class="panel panel-default">

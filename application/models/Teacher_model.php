@@ -124,6 +124,13 @@ class Teacher_model extends CI_Model
             ->delete('student_in_class');
         return $rs;
     }
+public function del_period_class($id)
+    {
+        $rs = $this->db
+            ->where('ID_create_class', $id)
+            ->delete('create_class');
+        return $rs;
+    }
 
     public function save_edit_class($data)
     {

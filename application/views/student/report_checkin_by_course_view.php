@@ -1,6 +1,14 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo site_url('teacher')?>">Teacher </a></li>
     <li class="active">สถานะการข้าเรียน </li>
+    <li>
+        <div class="pull-right">
+            <button type="button" class="btn btn-info " data-name="print">
+                <i class="glyphicon glyphicon-print"></i> พิมพ์รายงาน
+            </button>
+        </div>
+
+    </li>
 </ul>
 <div class="panel panel-default">
     <div class="panel-heading"><i class="glyphicon glyphicon-refresh"></i>สถานะการเข้าเรียน</div>

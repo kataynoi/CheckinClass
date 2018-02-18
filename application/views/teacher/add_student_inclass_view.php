@@ -1,5 +1,6 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo site_url('teacher')?>">Teacher </a></li>
+    <li><a href="<?php echo site_url('teacher/mg_class')?>">จัดการห้องเรียน </a></li>
     <li class="active"> เพิ่มนักศึกษาเข้าห้องเรียน</li>
 </ul>
 <div class="panel panel-default">

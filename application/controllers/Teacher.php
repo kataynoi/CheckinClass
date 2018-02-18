@@ -198,6 +198,18 @@ class Teacher extends CI_Controller {
         }
         render_json($json);
     }
+    public function period_class()
+    {
+        $id=$this->input->post('id');
+        $rs=$this->teacher->del_period_class($id);
+        //$this->layout->view('teacher/add_course_view');
+        if($rs){
+            $json = '{"success": true}';
+        }else{
+            $json = '{"success": false}';
+        }
+        render_json($json);
+    }
     public function del_course()
     {
         $id=$this->input->post('id');
@@ -229,9 +241,6 @@ class Teacher extends CI_Controller {
        // echo $rs;
         $ID_Create_class=$rs->ID_create_class;
         $Date_create= $rs->Date_create;
-        //echo $rs;
-      // exit();
-        //$rs2=$this->teacher->insert_student_in_class($id_class,$ID_Create_class,$Date_create);
         $std = $this->teacher->get_student_inclass($id_class);
         foreach($std as $r)
         {
@@ -328,6 +337,19 @@ class Teacher extends CI_Controller {
         }else{
             $status_checkin =2;
         }
+        $rs=$this->teacher->save_checkin_student($id_std,$createclassid,$status_checkin);
+        if($rs){
+            $json = '{"success": true}';
+        }else{
+            $json = '{"success": false}';
+        }
+        render_json($json);
+    }
+    public function checkin_student_leave()
+    {
+        $id_std=$this->input->post('id_std');
+        $createclassid=$this->input->post('createclassid');
+        $status_checkin=$this->input->post('status');
         $rs=$this->teacher->save_checkin_student($id_std,$createclassid,$status_checkin);
         if($rs){
             $json = '{"success": true}';

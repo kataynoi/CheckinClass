@@ -1,6 +1,9 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo site_url('teacher')?>">Teacher </a></li>
-    <li class="active"> เพิ่มนักศึกษาเข้าห้องเรียน</li>
+    <li><a href="<?php echo site_url('teacher/mg_checkin_class')?>">จัดการการเข้าเรียน </a></li>
+    <li class="active"> สร้างคาบเรียน </li>
+    <li>
+    </li>
 </ul>
 <div class="panel panel-default">
     <div class="panel-heading"><i class="glyphicon glyphicon-refresh"></i>เพิ่มนักศึกษาเข้าห้องเรียน</div>

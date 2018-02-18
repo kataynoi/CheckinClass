@@ -20,6 +20,7 @@ class Report extends CI_Controller {
         //load model
         $this->layout->setLayout('teacher_layout');
         $this->load->model('teacher_model', 'teacher');
+        $this->load->model('student_model', 'student');
         $this->load->model('Basic_model', 'basic');
         $this->db = $this->load->database('default', true);
         $this->id_teacher = $this->session->userdata('id');
@@ -53,7 +54,8 @@ class Report extends CI_Controller {
     {   $data['ID_Class']=$id
     ;
         $data['numall_student']=$this->teacher->get_numall_student_inclass($id);
-        $data['class']=$this->teacher->get_class_id($id);
+        //$data['class']=$this->teacher->get_class_id($id);
+        $data['class']=$this->student->get_class_id($id);
         $data['course']=$this->teacher->get_course();
         $rs=$this->teacher->get_student_inclass($id);
         $data['student'] =array();

@@ -14,7 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url()?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="<?php echo base_url()?>assets/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
 
     <!-- Custom CSS -->
     <link href="<?php echo base_url()?>assets/dist/css/sb-admin-2.css" rel="stylesheet">
@@ -67,6 +67,57 @@
 
     <!-- load application -->
     <script src="<?php echo base_url()?>assets/apps/js/apps.js"></script>
+    <style type="text/css">
+        .bgimg {
+            background-image: url('<?php echo base_url()?>assets/img/logo_web.png');
+        }
+        .badge {
+            padding: 1px 9px 2px;
+            font-size: 12.025px;
+            font-weight: bold;
+            white-space: nowrap;
+            color: #ffffff;
+            background-color: #999999;
+            -webkit-border-radius: 9px;
+            -moz-border-radius: 9px;
+            border-radius: 9px;
+        }
+        .badge:hover {
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .badge-error {
+            background-color: #b94a48;
+        }
+        .badge-error:hover {
+            background-color: #953b39;
+        }
+        .badge-warning {
+            background-color: #f89406;
+        }
+        .badge-warning:hover {
+            background-color: #c67605;
+        }
+        .badge-success {
+            background-color: #468847;
+        }
+        .badge-success:hover {
+            background-color: #356635;
+        }
+        .badge-info {
+            background-color: #3a87ad;
+        }
+        .badge-info:hover {
+            background-color: #2d6987;
+        }
+        .badge-inverse {
+            background-color: #333333;
+        }
+        .badge-inverse:hover {
+            background-color: #1a1a1a;
+        }
+    </style>
 
 </head>
 
@@ -75,18 +126,9 @@
 <div id="wrapper">
     <div id="freeow" class="freeow freeow-bottom-right"></div>
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?php echo site_url('teacher');?>">Checkin Class 1.0.0</a>
-        </div>
-        <!-- /.navbar-header -->
-<?php
+    <nav class="navbar navbar-default navbar-static-top bgimg" role="navigation"
+         style="margin-bottom: 0; height: 105px;width: 100%;  background-repeat: no-repeat;margin-top: 20px;margin-left: 10px; background-color: #ffffff;">
+    <br><?php
 if(!$this->session->userdata("name")){
     echo '<ul class="nav navbar-top-links navbar-right">';
     echo "<li class='dropdown'> <a href=".site_url('users/login')."><i class=' fagit fa-user'></i> Login </a></li></ul>";
@@ -100,10 +142,6 @@ if(!$this->session->userdata("name")){
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i> <?php echo $this->session->userdata('name');?>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="<?php echo site_url('users/change_pass')?>"><i class="fa fa-gear fa-fw"></i> Change Password </a>
-                    </li>
                     <li class="divider"></li>
                     <li><a href="<?php echo site_url('users/logout')?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
@@ -122,12 +160,9 @@ if(!$this->session->userdata("name")){
         </ul>
         <?php }?>
         <!-- /.navbar-top-links -->
-            <div class="navbar-default sidebar" role="navigation">
+            <div class=" navbar-default sidebar " role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <!-- /input-group -->
-                        </li>
                         <li>
                             <a href="<?php echo site_url('teacher/mg_teacher')?>"><i class="fa fa-dashboard fa-fw"></i>จัดการข้อมูลอาจารย์</a>
                         </li>

@@ -16,7 +16,7 @@
                 <th> อาจาร์ผู้สอน </th>
                 <th> จำนวนนักศึกษา</th>
                 <th> จำนวนคาบเรียนที่เปิดแล้ว</th>
-                <th> การจัดการ </th>
+                <th> การเข้าเรียน </th>
             </tr>
           </thead>
           <tbody>
@@ -29,8 +29,8 @@
                 echo "<td>$rs->Name_Teacher</td>";
                 echo "<td>$rs->count_student</td>";
                 echo "<td>$rs->Num_create_class</td>";
-                echo "<td><a href='".site_url('report/report_by_class/')."/".$rs->ID_Class."' alt='รายละเอียด' class='btn btn-info'>
-                <i class='glyphicon glyphicon-edit'></i>รายละเอียด</a> </td>";
+                echo "<td><a href='".site_url('report/report_by_class/')."/".$rs->ID_Class."' alt='การเข้าเรียน' class='btn btn-success btn-sm'>
+                <i class='glyphicon glyphicon-edit'></i>รายงานการเข้าเรียน</a> </td>";
                 echo "</tr>";
             }
 

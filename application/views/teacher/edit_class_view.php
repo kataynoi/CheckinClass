@@ -1,5 +1,6 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo site_url('teacher')?>">Teacher </a></li>
+    <li><a href="<?php echo site_url('teacher/mg_class')?>">จัดการห้องเรียน </a></li>
     <li class="active"> แก้ไขห้องเรียน : Edit Class </li>
 </ul>
 <div class="panel panel-default">
@@ -38,7 +39,7 @@
             </div>
             <br>
             <div class="row">
-                <label class="col col-lg-2 control-label">เทรอม</label>
+                <label class="col col-lg-2 control-label">เทอม</label>
                 <div class="col col-lg-3">
                     <input type="txt" id="Term" class="form-control" value="<?php echo $class->Term;?>" placeholder="เทรอม" data-type="number">
                 </div>

@@ -1,58 +1,42 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo site_url('teacher')?>">Teacher </a></li>
     <li class="active"> รายงานการเข้าเรียน</li>
+    <li class="">
+        <div class="pull-right">
+            <button type="button" class="btn btn-info " data-name="print">
+                <i class="glyphicon glyphicon-print"></i> พิมพ์รายงาน
+            </button>
+        </div>
+    </li>
 </ul>
 <div class="panel panel-default">
-    <div class="panel-heading"><i class="glyphicon glyphicon-refresh"></i>รายงานการเข้าเรียน</div>
-    <div class="panel-body text-center">
-        <form  class="form-horizontal"  method="post">
-            <div class="row">
-                <label class="col col-lg-2 control-label">ชื่อห้องเรียน </label>
-                <div class="col col-lg-8">
-                    <input disabled="disabled" type="text" id="Name_Class" class="form-control" value="<?php echo $class->Name_Class;?>" placeholder="ชื่อห้องเรียน">
-                    <input disabled="disabled" type="hidden" id="ID_Class" class="form-control" value="<?php echo $class->ID_Class;?>" placeholder="ชื่อห้องเรียน">
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <label class="col col-lg-2 control-label">ชื่อวิชา</label>
-                <div class="col col-lg-8">
-                    <select  class="form-control" id="ID_Course" disabled="disabled" >
-                        <option value="">ทั้งหมด</option>
-                        <?php
-                        foreach($course as $r) {
-                           if($r->ID_Course == $class->ID_Course){ $select = " selected ";}else{$select='';}
-                            echo '<option '.$select.'  value="'.$r->ID_Course.'"  >['.$r->ID_Course .'] '. $r->Course . '</option>';
-                        } ?>
-                    </select>
-                </div>
-            </div>
+        <div class="panel-heading"><i class="glyphicon glyphicon-refresh"></i>สถานะการเข้าเรียน</div>
+        <div class="panel-body">
+            <table class="table table-responsive">
+                <thead>
 
-            <br>
-            <div class="row">
-                <label class="col col-lg-2 control-label">ชื่อ อาจารย์ผู้สอน</label>
-                <div class="col col-lg-8">
-                    <input type="text" disabled="disabled" class="form-control" value="<?php echo  $this->session->userdata('name');?>" placeholder="ชื่ออาารย์ผู้สอน">
-                    <input type="hidden" id="ID_Teacher" value="<?php echo  $class->ID_Teacher;?>">
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <label class="col col-lg-2 control-label">เทรอม</label>
-                <div class="col col-lg-3">
-                    <input disabled="disabled" type="txt" id="Term" class="form-control" value="<?php echo $class->Term;?>" placeholder="เทรอม" data-type="number">
-                </div>
-                <label class="col col-lg-2 control-label">ปีการศึกษา</label>
-                <div class="col col-lg-3">
-                    <input disabled="disabled" type="txt" id="Year" class="form-control" value="<?php echo $class->Year;?>" placeholder="ปีการศึกษา" data-type="number">
-                </div>
-            </div>
-
-    </form>
-</div>
-<div class="panel-footer text-center">
-</div>
-</div>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ชื่อวิชา</td>
+                    <td><?php echo $class->Course;?></td>
+                </tr>
+                <tr>
+                    <td>อาจารย์ผู้สอน</td>
+                    <td><?php echo $class->Name_Teacher;?></td>
+                </tr>
+                <tr>
+                    <td>กลุ่มเรียน</td>
+                    <td><?php echo $class->Name_Class;?></td>
+                </tr>
+                <tr>
+                    <td>ภาคเรียน </td>
+                    <td><?php echo $class->Term ." / ". $class->Year;?></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 <div class="panel-body text-center">
     <table class="table table-responsive">
         <thead>
@@ -64,6 +48,7 @@
             <th> มาสาย</th>
             <th> ขาด</th>
             <th> ลา</th>
+            <th> เข้าเรียนร้อยละ</th>
         </tr>
         </thead>
         <tbody>
@@ -75,10 +60,11 @@
             echo "<td>$n</td>";
             echo "<td>$std->ID_Std</td>";
             echo "<td class='text-left'>$std->Name_Std</td>";
-            echo "<td>$std->Status2</td>";
-            echo "<td>$std->Status3</td>";
-            echo "<td>$std->Status1</td>";
-            echo "<td>$std->Status4</td>";
+            echo "<td><span class='badge badge-success'>$std->Status2</span></td>";
+            echo "<td><span class='badge badge-warning'>$std->Status3</span></td>";
+            echo "<td><span class='badge badge-error'>$std->Status1</span></td>";
+            echo "<td><span class='badge '>$std->Status4</span></td>";
+            echo "<td><span class='badge badge-success'>".Round($std->Status2*100/($std->Status1+$std->Status2+$std->Status3+$std->Status4),2)."</span></td>";
             echo "</tr>";
             $n++;
         }

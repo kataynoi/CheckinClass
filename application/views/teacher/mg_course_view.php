@@ -1,6 +1,7 @@
 <ul class="breadcrumb">
     <li><a href="<?php echo site_url('users/login')?>">Login </a></li>
     <li class="active">  ข้อมูลรายวิชา : Course view</li>
+
 </ul>
 <div class="panel panel-default">
     <div class="panel-heading"><i class="glyphicon glyphicon-refresh"></i> ข้อมูลรายวิชา : Course view <span class=" pull-right">

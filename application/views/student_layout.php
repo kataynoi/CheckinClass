@@ -67,6 +67,11 @@
 
     <!-- load application -->
     <script src="<?php echo base_url()?>assets/apps/js/apps.js"></script>
+    <style type="text/css">
+        .bgimg {
+            background-image: url('<?php echo base_url()?>assets/img/logo_web.png');
+        }
+    </style>
 
 </head>
 
@@ -75,16 +80,9 @@
 <div id="wrapper">
     <div id="freeow" class="freeow freeow-bottom-right"></div>
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?php echo site_url('student');?>">Checkin Class 1.0.0</a>
-        </div>
+    <nav class="navbar navbar-default navbar-static-top bgimg" role="navigation"
+         style="margin-bottom: 0; height: 105px;width: 100%;  background-repeat: no-repeat;margin-top: 20px;margin-left: 10px; background-color: #ffffff;">
+        <br>
         <!-- /.navbar-header -->
         <?php
         if(!$this->session->userdata("name")){
@@ -100,10 +98,6 @@
                             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i> <?php echo $this->session->userdata('name');?>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="<?php echo site_url('users/change_pass')?>"><i class="fa fa-gear fa-fw"></i> Change Password </a>
-                            </li>
                             <li class="divider"></li>
                             <li><a href="<?php echo site_url('users/logout')?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
