@@ -11,31 +11,31 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="https://www.rmu.ac.th/uploads/sliders/Slider_2017-12-04151237879669059.jpg" alt="...">
+            <img src="<?php echo base_url();?>assets/img/1.jpg" alt="...">
             <div class="carousel-caption">
 
             </div>
         </div>
         <div class="item">
-            <img src="https://www.rmu.ac.th/uploads/sliders/Slider_2017-11-16151079705433878.jpg" alt="...">
+            <img src="<?php echo base_url();?>assets/img/2.jpg" alt="...">
             <div class="carousel-caption">
 
             </div>
         </div>
         <div class="item">
-            <img src="https://www.rmu.ac.th/uploads/sliders/Slider_2018-02-06151790424424332.jpg" alt="...">
+            <img src="<?php echo base_url();?>assets/img/3.jpg" alt="...">
             <div class="carousel-caption">
 
             </div>
         </div>
         <div class="item">
-            <img src="https://www.rmu.ac.th/uploads/sliders/Slider_2018-02-02151756190651114.jpg" alt="...">
+            <img src="<?php echo base_url();?>assets/img/4.jpg" alt="...">
             <div class="carousel-caption">
 
             </div>
         </div>
         <div class="item">
-            <img src="https://www.rmu.ac.th/uploads/sliders/Slider_2018-01-17151617746428095.jpg" alt="...">
+            <img src="<?php echo base_url();?>assets/img/5.jpg" alt="...">
             <div class="carousel-caption">
 
             </div>

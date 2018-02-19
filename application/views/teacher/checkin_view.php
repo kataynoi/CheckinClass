@@ -40,7 +40,7 @@
             </div>
             <br>
             <div class="row">
-                <label class="col col-lg-2 control-label">เทรอม</label>
+                <label class="col col-lg-2 control-label">เทอม</label>
                 <div class="col col-lg-3">
                     <input disabled="disabled" type="txt" id="Term" class="form-control" value="<?php echo $class->Term;?>" placeholder="เทรอม" data-type="number">
                 </div>
